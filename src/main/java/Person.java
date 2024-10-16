@@ -110,8 +110,15 @@ public class Person {
 
     public void addParents(Person mother, Person father) {
         setMother(mother);
+        if (mother.getChildren() == null) {
+            mother.setChildren(new ArrayList<>());
+        }
         mother.addChild(this);
+
         setFather(father);
+        if (father.getChildren() == null) {
+            father.setChildren(new ArrayList<>());
+        }
         father.addChild(this);
     }
 
@@ -137,6 +144,9 @@ public class Person {
     }
 
     public void addChild(Person child) {
+        if (children == null) {
+            children = new ArrayList<>();
+        }
         if (!getChildren().contains(child)) {
             getChildren().add(child);
         }
